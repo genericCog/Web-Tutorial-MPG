@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+	<!--[if lt IE 7]><html lang="en" class="no-js ie6"><![endif]-->
+	<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
+	<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
+	<!--[if gt IE 8]><!-->
+	<html lang="en" class="no-js">
+	<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="AngularJS, JSON, PHP, HTML, JavaScript" />
+	<title>MPG Records Maintenance</title>
+	<meta name="description" content="Web based fuel management. POST operation for JSON file.">
+	<meta name="author" content="Your Name">
+	<!-- Meta tags that set up the page as a mobile page  -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" /> <!-- content="black" -->
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!--should not appear as hypertext links http://www.html-5.com/metatags/format-detection-meta-tag.html -->
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta charset="UTF-8">
+	
+	<meta name="revised" content="Domain Admin, 05/27/2016" />
+	<meta http-equiv="refresh" content="600" />
+
+	<!-- Fonts -->
+	<script src="https://use.fontawesome.com/d33bae9986.js"></script>
+	<!-- Main Styles-->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'><!-- item 09 -->
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+	<!-- Bootstrap CDN -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<!-- This script checks if moment.js is loaded from the CDN. If not loaded, then it will call on a local version of the script -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.js"></script>
+	<script>
+	if (!window.moment) { 
+	document.write('<script src="js/moment.min.js"><\/script>');
+	}
+	// This script checks if moment.js is loaded from the CDN. If not loaded, then it will call on a local version of the script
+	</script>
+</head>
+
+<body>
+  <header id="header">
+    <script>
+      $(function() {
+        $("#includedContent").load("inner/index_nav.html");
+      });
+    </script>
+    <div id="includedContent"></div>
+  </header>
+
+<form action="_process3.php?hello=true" method="POST" role="form">	
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6">		
+				<div class="form-group">
+					<label for="mpg_date">Date:</label>
+					<input type="date" id="mpg_date" class="form-control" name="mpg_date"/>
+				</div>
+				
+			  <div class="form-group">
+				<label for="mpg_miles">Odometer:</label>
+				<input type="number" min="0" step="any" class="form-control" id="mpg_miles" name="mpg_miles" />
+			  </div>
+			  <div class="form-group">
+				<label for="mpg_gallons">Gallons:</label>
+				<input type="number" min="0" step="any" class="form-control" id="mpg_gallons" name="mpg_gallons" />
+			  </div>
+			  <div class="form-group">
+				<label for="mpg_cost">Cost:</label>
+				<input type="number" min="0" step="any" class="form-control" id="mpg_cost" name="mpg_cost" />
+			  </div>
+			  <div class="form-group">
+				<label for="mpg_mpg">MPG:</label>
+				<input type="number" min="0" step="any" class="form-control" id="mpg_mpg" name="mpg_mpg" />
+			  </div>
+			</div>
+			<div class="col-xs-6">
+			  <div class="form-group">
+				<label for="mpg_street">Street:</label>
+				<input type="text" class="form-control" id="mpg_street" name="mpg_street" />
+			  </div>
+			  <div class="form-group">
+				<label for="mpg_city">City:</label>
+				<input type="text" class="form-control" id="mpg_city" name="mpg_city" />
+			  </div>
+			  <div class="form-group">
+				<label for="mpg_state">State:</label>
+				<input type="text" class="form-control" id="mpg_state" name="mpg_state" />
+			  </div>
+			  <div class="form-group">
+				<label for="mpg_zip">Zip:</label>
+				<input type="number" min="0" step="any" class="form-control" id="mpg_zip" name="mpg_zip" />
+			  </div>
+			  <div class="form-group">
+				<label for="mpg_time">Time:</label>
+				<input type="text" class="form-control" id="mpg_time" name="mpg_time" />
+			  </div>
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col-xs-12">	
+				<div class="form-group">
+					<input type="submit" value="Submit New Record" class="btn btn-primary btn-block" />
+				</div>
+			</div>
+		</div>		
+	</div>
+	
+</form>
+<div class="container">
+
+<!-- TO DO: implement AngularJS display of last Milage -->
+<!-- TO DO: implement AngularJS calculation of MPG -->
+</div>
+<script>
+//  https://www.quora.com/What-do-socialist-countries-like-Denmark-or-Sweden-think-of-Bernie-Sanders
+document.getElementById("mpg_date").value = new Date().toJSON().slice(0,10);
+document.getElementById('mpg_miles').value=168383;
+document.getElementById('mpg_gallons').value=11.861;
+document.getElementById('mpg_cost').value=28.93;
+document.getElementById('mpg_mpg').value=25.4;
+document.getElementById('mpg_street').value="5500 Mirage St";
+document.getElementById('mpg_city').value="Yorba Linda";
+document.getElementById('mpg_state').value="CA";
+document.getElementById('mpg_zip').value=92807;
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString
+// http://momentjs.com/docs/#/parsing/string-format/
+var now = new moment();
+document.getElementById('mpg_time').value = now.format("HH:mm");
+</script>
+
+</body>
+</html>

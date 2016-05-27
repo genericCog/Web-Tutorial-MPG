@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+	<!--[if lt IE 7]><html lang="en" class="no-js ie6"><![endif]-->
+	<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
+	<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
+	<!--[if gt IE 8]><!-->
+	<html lang="en" class="no-js">
+	<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="AngularJS, JSON, PHP, HTML, JavaScript" />
+	<title>MPG Records Maintenance</title>
+	<meta name="description" content="Web based fuel management. Records display operation for JSON file.">
+	<meta name="author" content="Site Admin">
+	<!-- Meta tags that set up the page as a mobile page  -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" /> <!-- content="black" -->
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!--should not appear as hypertext links http://www.html-5.com/metatags/format-detection-meta-tag.html -->
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta charset="UTF-8">
+	
+	<meta name="revised" content="Site Admin, 05/27/2016" />
+	<!--<meta http-equiv="refresh" content="600" /> -->
+	<!--
+	item-01: for D3 visualization library
+	item-02: for the D3, tool-tip visualization
+	item-03: Bootstrap and Bootstrap JS Tabs
+	item-04: Bootswatch custom theme navigation
+	item-05: FontAwesome Content Delivery Network (CDN)  <script src="https://use.fontawesome.com/d33bae9986.js"></script>
+	item-06: BootStrap Content Delivery Network (CDN)
+	item-07: Angular
+	item-08: Custom styles
+	item-09: Google Font
+	-->
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script><!-- item-01 -->
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script> <!-- item-02 -->
+	<script src="https://code.jquery.com/jquery-2.1.4.js"></script><!--
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  item-03 -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <!-- item-03 -->
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> <!-- item-03, item-06 -->
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>item-07 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script> <!-- item-07 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script> <!-- item-07 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" /> <!-- item-05 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css" /> <!-- item-04 -->
+  <link rel="stylesheet" href="css/style.css" /> <!-- item-08 -->
+  <link rel="stylesheet" href="css/style-D3.css" /> <!-- item-08 -->
+  <!-- NAVIGATION requires: Bootstrap & BootsWatch CSS, jQuery & JavaScript libraries  -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css" rel="stylesheet" integrity="sha256-hMIwZV8FylgKjXnmRI2YY0HLnozYr7Cuo1JvRtzmPWs= sha512-k+wW4K+gHODPy/0gaAMUNmCItIunOZ+PeLW7iZwkDZH/wMaTrSJTt7zK6TGy6p+rnDBghAxdvu1LX2Ohg0ypDw=="
+  crossorigin="anonymous">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+  <!-- END NAVIGATION STYLES -->  
+	   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'><!-- item 09 -->
+  
+</head>
+
+<body>
+  <header id="header">
+    <script>
+      $(function() {
+        $("#includedContent").load("inner/index_nav.html");
+      });
+    </script>
+    <div id="includedContent"></div>
+  </header>
+
+  <div class="">
+    <!--genericStyle-->
+    <div class="container">
+      <h5>2005 Honda Civic Fuel Data Log</h5>
+
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#project">Project</a></li>
+        <li><a data-toggle="tab" href="#resources">Resources</a></li>
+        <li><a data-toggle="tab" href="#toDo">To Do</a></li>
+        <li><a data-toggle="tab" href="#displayAngular">Angular Data Display</a></li>
+        <li><a data-toggle="tab" href="#displayD3">D3 Data Visualization</a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="project" class="tab-pane fade in active">
+          <script>
+            $(function() {
+              $("#includeProject").load("inner/index_project.html");
+            });
+          </script>
+          <div id="includeProject"></div>
+
+
+
+        </div>
+        <div id="resources" class="tab-pane fade">
+          <h3>Resources</h3>
+          <script>
+            $(function() {
+              $("#includeResources").load("inner/index_resources.html");
+            });
+          </script>
+          <div id="includeResources"></div>
+        </div>
+
+        <div id="displayAngular" class="tab-pane fade">
+          <h3>Angular Data Binding </h3>
+          <div ng-app="mpgApp" ng-controller="mpgDataCtrl">
+
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<!-- ANGULAR SEARCH -->
+						<form class="form-inline">
+							<div class="form-group">
+								<input class="form-control" value="Type to search" placeholder="Type to search" id="focusedInput" type="text" style="margin-right: 5px;" ng-model="search">
+							</div>
+							<div class="form-group">
+								<ul class="nav nav-pills" style="margin: 5px;">
+									<li class="active"><a href="#">
+									Fuel Log Entries: <span class="badge">{{mpgData.length}}</span></a></li><br>
+								</ul>
+							</div>
+							<div class="form-group">
+								<a class="btn" href="_process.html" class="btn btn-primary btn-lg" style="margin: 5px;">Add New Record</a> <br>
+							</div>
+						</form>
+						<!-- END ANGULAR SEARCH -->
+					</div>
+				</div>
+			</div>
+            <div id="tooltip"></div>
+
+            <!-- Angular Pagination -->
+            <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+            </dir-pagination-controls>
+            <!-- Angular data dislay in table -->
+
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th ng-click="sort('Date')">Date
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='Date'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th ng-click="sort('Miles')">Mileage
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='Miles'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th ng-click="sort('Gallons')">Gallons
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='Gallons'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th ng-click="sort('Cost')">Cost
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='Cost'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th ng-click="sort('MPG')">MPG
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='MPG'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                </tr>
+              </thead>
+
+              <!--<tr ng-repeat="x in mpgData|orderBy:sortKey:reverse|filter:search">-->
+              <tr dir-paginate="x in mpgData|filter:search|itemsPerPage:15">
+                <td>{{ x.Date }}</td>
+                <td>{{ x.Miles }}</td>
+                <td>{{ x.Gallons }}</td>
+                <td>{{ x.Cost | currency }}</td>
+                <td>{{ x.MPG }}</td>
+              </tr>
+            </table>
+
+            <div id="tooltip"></div>
+            <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+            </dir-pagination-controls>
+          </div>
+
+        </div>
+
+
+        <div id="displayD3" class="tab-pane fade">
+          <h3>D3 Data Visualization</h3>
+          <div class="jumbotron">
+            <!-- D3 data visualization -->
+            <div id="myVertBarChart"></div>
+          </div>
+          
+        </div>
+
+
+        <div id="toDo" class="tab-pane fade">
+          <h3>To Do</h3>
+          <script>
+            $(function() {
+              $("#includeToDo").load("inner/index_todo.html");
+            });
+          </script>
+          <div id="includeToDo"></div>
+
+        </div>
+      </div>
+    </div>
+    <!-- -->
+  </div>
+  <!-- END genericStyle-->
+
+ <!---->  
+	<script src="js/mpgApp.js"></script>
+	<script src="js/mpgController.js"></script>
+	<script src="js/dirPagination.js"></script>
+	<script src="js/mpg-D3.js"></script>  
+
+</body>
+
+</html>
